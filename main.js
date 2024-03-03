@@ -30,7 +30,7 @@ const player = new Player(planeTexture);
 const { maxBoost } = GameSettings.player;
 
 app.addToStage(player);
-player.spawn();
+player.spawn(app.renderer.height / 2);
 
 let spawnCooldown = 0;
 let spawnRate = 120;

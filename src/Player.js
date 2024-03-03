@@ -13,11 +13,10 @@ class Player extends Sprite {
     this.targetGravity = 0;
   }
 
-  spawn() {
+  spawn(height) {
     this.position.x = 40;
-    console.log(this.parent);
-
-    this.position.y = this.parent.height;
+    this.targetY = height;
+    this.position.y = height;
     this.currentBoost = GameSettings.player.maxBoost;
   }
 
