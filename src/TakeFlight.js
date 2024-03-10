@@ -3,6 +3,7 @@ import StartScreen from './containers/StartScreen.js'
 import * as WebFont from 'webfontloader';
 import ScoreManager from './ScoreManager.js'
 import GameSettings from './GameSettings.js'
+import GameOverScreen from './containers/GameOverScreen.js'
 
 export default class TakeFlight {
 

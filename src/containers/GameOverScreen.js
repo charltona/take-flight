@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
 import {MENU_INSTRUCTIONS} from '../CONSTANTS.js';
 import GameScreen from './GameScreen.js'
+import { Text, TextStyle } from 'pixi.js'
 export default class GameOverScreen {
   constructor(coordinator) {
     this.app = coordinator.app;
@@ -21,7 +22,26 @@ export default class GameOverScreen {
       titleText.x = (container._width - titleText.width) / 2;
       titleText.y = 50;
 
-  ;
+      this.scoreText = new PIXI.Text(`Score: ${this.coordinator.scoreManager.score}`, {
+        fontFamily: "Roboto",
+        fontSize: 24,
+        fill: 0xFFFFFF,
+        align: "left"
+      });
+      this.scoreText.x = (container._width - this.scoreText.width) / 2 ;
+      this.scoreText.y = 100;
+
+      const highScoreText = new Text(
+        `High Score: ${this.coordinator.scoreManager.highscore}`,
+        new TextStyle({
+          fontFamily: "Roboto",
+          fontSize: 18,
+          fill: "white",
+          align: "left"
+        })
+      );
+      highScoreText.x = (container._width - highScoreText.width) / 2;
+      highScoreText.y = 140;
 
       const startGameText = new PIXI.Text('Play Again', {
         fontFamily: 'Roboto',
@@ -40,6 +60,8 @@ export default class GameOverScreen {
       /** Add Elements to Stage **/
       container.addChild(titleText);
       container.addChild(startGameText);
+      container.addChild(this.scoreText);
+      container.addChild(highScoreText);
 
       resolve();
     })

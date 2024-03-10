@@ -37,6 +37,7 @@ export default class GameScreen {
         20
       );
 
+      this.coordinator.scoreManager.score = 0;
       this.scoreText = new PIXI.Text(`Score: ${this.coordinator.scoreManager.score}`, {
         fontFamily: "Roboto",
         fontSize: 24,
@@ -141,6 +142,7 @@ export default class GameScreen {
 
     // Game Over scenario
     if (this.player.y > this.container._height) {
+      this.coordinator.scoreManager.saveHighScore();
       this.coordinator.gotoScene(new GameOverScreen(this.coordinator));
     }
 
