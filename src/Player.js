@@ -30,6 +30,14 @@ class Player extends Sprite {
     }
   }
 
+  descend() {
+    this.targetY -= GameSettings.player.uplift;
+    this.targetRotation = Math.PI / 4;
+    this.currentBoost -= 5;
+    this.targetGravity = 0;
+
+  }
+
   addBoost(value) {
     this.currentBoost += value;
     if (this.currentBoost > GameSettings.player.maxBoost) {
@@ -47,6 +55,9 @@ class Player extends Sprite {
     this.rotation += (this.targetRotation - this.rotation) * 0.01;
     if (this.targetRotation < 0) {
       this.targetRotation += GameSettings.player.rotationSpeed;
+    }
+    if (this.targetRotation > 0) {
+      this.targetRotation -= GameSettings.player.rotationSpeed;
     }
     if (this.targetGravity < this.gravity) {
       this.targetGravity += GameSettings.player.glideTime;

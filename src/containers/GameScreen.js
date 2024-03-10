@@ -65,7 +65,32 @@ export default class GameScreen {
       clickableArea.height = container._height;
       clickableArea.eventMode = 'static';
       clickableArea.alpha = 0;
-      clickableArea.on('pointerdown', () => this.player.jump());
+      // clickableArea.on('pointerdown', () => this.player.jump());
+
+      let startPointerPosition = null;
+
+      clickableArea.on('pointerdown', (event) => {
+        startPointerPosition = event.data.global.y;
+      });
+
+      clickableArea.on('pointermove', (event) => {
+        if (startPointerPosition === null) return;
+
+        const currentPointerPosition = event.data.global.y;
+        const difference = startPointerPosition - currentPointerPosition;
+
+        if (difference > 5) {
+          this.player.jump();
+          startPointerPosition = null;
+        } else if (difference < -5) {
+          this.player.descend();
+          startPointerPosition = null;
+        }
+      });
+
+      clickableArea.on('pointerup', () => {
+        startPointerPosition = null;
+      });
 
       /**
        * Add all stage elements

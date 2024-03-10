@@ -12,7 +12,8 @@ export default class TakeFlight {
     this.app = new PIXI.Application({
       resizeTo: window,
       autoDensity: true,
-      backgroundColor: 0xD40119,
+      backgroundColor: 0x000000,
+      // backgroundColor: 0xD40119,
       resolution: window.devicePixelRatio || 1,
     })
 
