@@ -1,6 +1,10 @@
+import GameSettings from './GameSettings.js'
+
 class ScoreManager {
   _score;
   _highscore;
+
+  STORAGE_KEY = GameSettings.LOCAL_STORAGE_KEY + GameSettings.GAME_VERSION;
 
   constructor() {
     this._score = 0;
@@ -20,7 +24,7 @@ class ScoreManager {
   }
 
   get highscore() {
-    let highScore = localStorage.getItem("highScore");
+    let highScore = localStorage.getItem(this.STORAGE_KEY);
     if (highScore === null) {
       return 0;
     } else {
@@ -29,13 +33,13 @@ class ScoreManager {
   }
 
   set highscore(value) {
-    let previousHighScore = localStorage.getItem("highScore");
+    let previousHighScore = localStorage.getItem(this.STORAGE_KEY);
     if (previousHighScore === null) {
-      localStorage.setItem("highScore", value);
+      localStorage.setItem(this.STORAGE_KEY, value);
       this._highscore = value;
     } else {
       if (value > previousHighScore) {
-        localStorage.setItem("highScore", value);
+        localStorage.setItem(this.STORAGE_KEY, value);
         this._highscore = value;
       }
     }

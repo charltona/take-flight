@@ -1,4 +1,6 @@
 const gameSettings = {
+  GAME_VERSION: '0.0.1',
+  LOCAL_STORAGE_KEY: 'TAKE_FLIGHT_SCORE_',
   world: {
     gravity: 0.5,
     gameSpeed: 1,

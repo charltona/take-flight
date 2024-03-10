@@ -133,7 +133,7 @@ export default class GameScreen {
 
       if (checkCollision(this.player, collectable.sprite)) {
         this.coordinator.scoreManager.addToScore(10);
-        this.player.addBoost(10);
+        this.player.addBoost(5);
         collectable.destroy();
       }
     });
