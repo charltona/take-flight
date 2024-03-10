@@ -32,6 +32,9 @@ class Player extends Sprite {
 
   addBoost(value) {
     this.currentBoost += value;
+    if (this.currentBoost > GameSettings.player.maxBoost) {
+      this.currentBoost = GameSettings.player.maxBoost;
+    }
   }
 
   getBoost() {
